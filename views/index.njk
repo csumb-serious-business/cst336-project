@@ -1,0 +1,9 @@
+{% extends "layouts/base.njk" %}
+{% set title="Sample Project home"%}
+
+{% block main %}
+rows are:
+{% asyncAll row in rows %}
+{{ row.keyword }}
+{% endall %}
+{% endblock %}

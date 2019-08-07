@@ -4,6 +4,9 @@ secrets
 # jetbrains
 .idea
 
+# open office tempfiles
+.~lock.*
+
 ### Copied from: https://github.com/github/gitignore/blob/master/Node.gitignore ###
 
 # Logs

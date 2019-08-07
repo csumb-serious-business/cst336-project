@@ -7,9 +7,9 @@ secrets = json.parse(readFile('secrets/db.json5'));
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
+    database: 'serious_cst336',
     user: secrets.user,
     password: secrets.password,
-    database: 'cst336_lab5',
 });
 
 pool.getConnection((err, connection) => {

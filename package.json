@@ -4,8 +4,7 @@
   "description": "Starter Nunjucks + Express project",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon --ext js,njk app.js --dev",
-    "deploy": "git push; bin/sync.sh; ssh ubuntu@sample.com < bin/deploy.sh"
+    "boodstrap": "bootstrap.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +18,7 @@
   "homepage": "https://github.com/lixiii/nunjucks-express-starter#readme",
   "dependencies": {
     "ava": "^2.2.0",
+    "csv-parse": "^4.4.4",
     "express": "^4.17.1",
     "json5": "^2.1.0",
     "mysql": "^2.17.1",

@@ -1,32 +1,68 @@
 const mysql = require('mysql');
 const json = require('json5');
-const readFile = require('fs').readFileSync;
+const fs = require('fs');
 const parse = require('csv-parse');
-secrets = json.parse(readFile('secrets/db.json5'));
+SECRETS = json.parse(fs.readFileSync('secrets/db.json5'));
 
-// console.log(query);
-const conn = mysql.createConnection({
+
+const CONNECTION = mysql.createConnection({
     host: 'localhost',
     database: 'serious_cst336',
-    user: secrets.user,
-    password: secrets.password,
+    user: SECRETS.user,
+    password: SECRETS.password,
     multipleStatements: true
 });
 
-let result;
-let query;
-//// create temp table & load csv -- INFILE security workaround
-// read csv
 
-// create temp table
-query = readFile('sql/oltp-temp-create.sql', 'utf-8');
-result = conn.query(query);
+function populateOLTP() {
+    fs.createReadStream('sql/data/artwork.csv')
+        .pipe(parse({delimiter: ','}, _procCSV))
+}
 
-// load table
+function _procCSV(err, data) {
+    if (err) {
+        console.log(`error: ${err}`);
+        return;
+    }
 
-//// populate biz tables from temp
-// query = readFile('sql/oltp-load.sql', 'utf-8');
-// result = conn.query(query);
+    console.log(`creating temp_art table`);
+    db('sql/oltp/temp-art-create.sql');
 
 
-//// clear temp
+    console.log(`populating temp_art table from csv contents`);
+    data.shift(); // skip header row
+    data.forEach(line => {
+        console.log(`line: ${line}`);
+        db('sql/oltp/temp-art-insert.ps.sql', [...line])
+    });
+
+    console.log(`populating DB from temp_art table`);
+    db('sql/oltp/temp-art-to-db.sql');
+
+    // remove temp art
+    console.log(`remove temp_art table`);
+    db('sql/oltp/temp-art-remove.sql')
+}
+
+/**
+ * Queries the database as a promise
+ * @param sqlFile the sql statement to execute
+ * @param params the parameters to use in the query (optional)
+ * @return result
+ */
+function db(sqlFile, params = []) {
+    let sql = fs.readFileSync(sqlFile, 'utf-8');
+
+    // console.log(`sql: ${sql}, params: ${params}`);
+    CONNECTION.query(sql, params,
+        (err, result) => {
+            if (err) {
+                console.log(err)
+            }
+            // console.log(result);
+            return result;
+        })
+}
+
+
+populateOLTP();

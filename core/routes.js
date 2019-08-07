@@ -34,9 +34,10 @@ module.exports = router;
  * @returns {Promise<any>} returns a promised list of keywords
  */
 function dbGetKeywords() {
-    let sql = `SELECT DISTINCT keyword
-               FROM favorites
-               ORDER BY keyword`;
+    // todo use preloaded sql from file
+    let sql = `SELECT DISTINCT title
+               FROM masterpiece
+               ORDER BY title`;
     return dbPromise(sql);
 }
 
@@ -49,15 +50,15 @@ function dbGetKeywords() {
  */
 function dbPromise(sql, params = []) {
 
-    // console.log(`sql: ${sql}, params: ${params}`);
+    console.log(`sql: ${sql}, params: ${params}`);
     return new Promise((resolve, reject) => {
         db.query(sql,
             params,
             (err, result) => {
                 if (err) {
-                    /* do nothing */
+                    console.log(err);
                 }
-                // console.log(result);
+                console.log(result);
                 return resolve(result);
             })
     })

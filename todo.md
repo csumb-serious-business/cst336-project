@@ -36,7 +36,7 @@ user section:
 - search & filter data using 3+ fields
     + filter by medium
     + filter by artist
-    + filter by masterpiece (substring)
+    + filter by masterpiece title (substring)
     + filter by sale price
 - add items to cart
 - see items in cart (with total cost)

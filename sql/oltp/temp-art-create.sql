@@ -1,7 +1,9 @@
 # MySQL
 # setup temp table for csv load
-DROP TABLE IF EXISTS temp_artwork;
-CREATE TABLE temp_artwork
+USE serious_cst336;
+
+DROP TABLE IF EXISTS temp_art;
+CREATE TABLE temp_art
 (
     `title`  VARCHAR(250) NOT NULL,
     `medium` VARCHAR(100) NOT NULL,

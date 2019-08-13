@@ -1,22 +1,27 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
-const routes = require("./core/routes");
+const app = require("./app/routes");
+const admin = require("./admin/routes");
 
 
+var server = express();
 
-var app = express();
+server.set('view engine', 'njk');
 
-app.set('view engine', 'njk');
 
-nunjucks.configure(['views'], {
+nunjucks.configure(['common/views', 'admin/views', 'app/views'], {
     autoescape: true,
-    express: app
+    express: server
 });
 
+// serve common static files
+server.use('/', express.static('common/public'));
 
+// wire up routes
+server.use(admin);
+server.use(app);
 
-app.use(routes);
 
 var port = 33333;
-app.listen(port);
+server.listen(port);
 console.log(`server listening on port ${port}`);

@@ -20,7 +20,7 @@ Docs:
 - Title
 - Description
 - Mockup
-- DB Schema - modelio
+- DB Schema
 - Screenshots - 
 
 DB
@@ -42,7 +42,7 @@ user section:
 - see items in cart (with total cost)
 
 admin section:
-- login/logout 
+- login/logout
     + express-session
 - load/update content for 1+ table (pre-pop existing data in the form)
     + bootstrap site -- load csv content into table

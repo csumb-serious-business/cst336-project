@@ -10,16 +10,16 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
     <link rel="shortcut icon" href="favicon.ico">
-    {% include "../snippets/common/head.njk" %}
+    {% include "snippets/head.njk" %}
 
     {% block head %}{% endblock %}
 </head>
-
 <body>
+
 {# margin to accommodate header bar #}
-<main class='g-mt-70'>
-    {% include "../snippets/common/header.njk" %}
-    {% include "../snippets/app/nav.njk" %}
+<main>
+    {% block header %}{% endblock %}
+    {% block nav %}{% endblock %}
 
     {% block main %}
         <div class="container g-py-150 text-center">
@@ -29,7 +29,7 @@
                 Page</a>
         </div>
     {% endblock %}
-    {% include "../snippets/common/footer.njk" %}
+    {% block footer %}{% endblock %}
 </main>
 
 {% block scripts %}{% endblock %}

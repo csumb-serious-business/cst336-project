@@ -22,9 +22,9 @@ const CONNECTION = mysql.createConnection({
 function main(fullRebuild = false) {
     if (fullRebuild) {
         console.log(`fully rebuilding the database`);
-        db('sql/oltp/create-schema.sql');
+        db('db/oltp/create-schema.sql');
     }
-    fs.createReadStream('sql/data/artwork.csv')
+    fs.createReadStream('db/data/artwork.csv')
         .pipe(parse({delimiter: ','}, _procCSV));
 }
 
@@ -41,34 +41,34 @@ async function _procCSV(err, data) {
     }
 
     console.log(`creating temp_art table`);
-    await db('sql/oltp/temp-art-create.sql');
+    await db('db/oltp/temp-art-create.sql');
 
 
     console.log(`populating temp_art table from csv contents`);
     await data.shift(); // skip header row
     data.forEach(line => {
         // console.log(`line: ${line}`);
-        db('sql/oltp/temp-art-insert.ps.sql', [...line])
+        db('db/oltp/temp-art-insert.ps.sql', [...line])
     });
 
     console.log(`populating DB from temp_art table`);
-    await db('sql/oltp/temp-art-to-db.sql');
+    await db('db/oltp/temp-art-to-db.sql');
 
     // remove temp art
     console.log(`remove temp_art table`);
-    await db('sql/oltp/temp-art-remove.sql')
+    await db('db/oltp/temp-art-remove.sql')
 }
 
 /**
  * Queries the database as a promise
- * @param sqlFile the sql statement to execute
+ * @param sqlFile the db statement to execute
  * @param params the parameters to use in the query (optional)
  * @return result
  */
 function db(sqlFile, params = []) {
     let sql = fs.readFileSync(sqlFile, 'utf-8');
 
-    // console.log(`sql: ${sql}, params: ${params}`);
+    // console.log(`db: ${db}, params: ${params}`);
     CONNECTION.query(sql, params,
         (err, result) => {
             if (err) {
@@ -80,4 +80,4 @@ function db(sqlFile, params = []) {
 }
 
 
-main(false);
+main(true);

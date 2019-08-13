@@ -1,0 +1,9 @@
+{# app root #}
+{% from "../snippets/app/search.macro.njk" import searchForm %}
+
+{% extends "../layouts/base.njk" %}
+{% set title="Sample Project home" %}
+
+{% block main %}
+    {{ searchForm(types, materials, artists) }}
+{% endblock %}

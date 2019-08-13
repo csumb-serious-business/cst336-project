@@ -9,7 +9,7 @@ const pool = mysql.createPool({
     host: 'localhost',
     database: 'serious_cst336',
     user: secrets.user,
-    password: secrets.password,
+    password: secrets.password
 });
 
 pool.getConnection((err, connection) => {

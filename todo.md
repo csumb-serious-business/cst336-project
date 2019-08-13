@@ -26,7 +26,7 @@ Docs:
 DB
 - ✓ 4+ tables
 - ✓ 10+ fields among db tables
-- 20+ records in 1+ table
+- ✓ 20+ records in 1+ table
 
 Site:
 - 2+ ajax calls to web apis
@@ -34,7 +34,7 @@ Site:
 
 user section:
 - search & filter data using 3+ fields
-    + filter by medium
+    + filter by type/materials
     + filter by artist
     + filter by masterpiece title (substring)
     + filter by sale price

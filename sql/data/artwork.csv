@@ -1,5 +1,26 @@
-title,medium,artist,value
-"Mona List","Oil on Canvas","Leonardo da Vinci",99999999
-"The Starry Night","Oil on Canvas","Vincent van Gogh",9999999
-"Guernica","Oil on Canvas","Pablo Picasso",15
-"Statue of Liberty","Copper Sculpture","Frédéric Auguste Bartholdi",18822
+title,type,materials,artist,value,year,pic_src
+L'Homme au doigt,sculpture,bronze,Alberto Giacometti,141300000,1947,https://upload.wikimedia.org/wikipedia/en/8/81/L%27Homme_au_doigt_Alberto_Giacometti.jpg
+Rabbit,sculpture,stainless steel,Jeff Koons,91100000,1986,https://media.npr.org/assets/img/2019/05/16/ap_19123535558210-a0447ff0d9ee9b0b87776576d9aa3d364ae02798-s800-c85.jpg
+Tete,sculpture,limestone,Amedeo Modigliani,59500000,1910-1912,https://secure-cf-c.ooyala.com/szdHIzbjpoYnUSPenHTBtPyXURkK8eaV/promo225735487
+Guennol Lioness,sculpture,limestone,unknown,57200000,3000-2800 BCE,https://upload.wikimedia.org/wikipedia/commons/f/ff/Guennol_Lioness.jpg
+Winged Genius,sculpture,gypsum,unknown,31000000,883-859 BCE,https://news.artnet.com/app/news-upload/2018/10/Assyrian-relief-776x1024.jpg
+Madame LR (Portrait de Mme LR),sculpture,oak wood,Constantin Brancusi,37600000,1914-1917,https://www.christies.com/img/LotImages/2009/PAR/2009_PAR_01209_0035_000().jpg
+Reclining Figure: Festival,sculpture,bronze,Henry Moore,30100000,1951,https://upload.wikimedia.org/wikipedia/commons/7/76/Scottish_National_Gallery_of_Modern_Art_Henry_Moore_2004_SMC.jpg
+Tete de femme (Dora Maar),sculpture,bronze,Pablo Picasso,29100000,1941,https://upload.wikimedia.org/wikipedia/en/2/2b/Tete_de_femme_%28Dora_Maar%29.jpg
+Spider,sculpture,bronze,Louise Bourgeois,28200000,1997,https://www.christies.com/img/LotImages/2015/NYR/2015_NYR_03790_0010B_000(louise_bourgeois_spider).jpg
+Salvator Mundi,painting,oil on walnut,Leonardo da Vinci,450300000,1500,https://upload.wikimedia.org/wikipedia/commons/5/5c/Leonardo_da_Vinci%2C_Salvator_Mundi%2C_c.1500%2C_oil_on_walnut%2C_45.4_%C3%97_65.6_cm.jpg
+Interchange,painting,oil on canvas,Willem de Kooning,317000000,1955,https://upload.wikimedia.org/wikipedia/en/5/5f/Photo_of_Interchanged_by_Willem_de_Kooning.jpg
+The Card Players,painting,oil on canvas,Paul Cezanne,278000000,1894-1895,https://upload.wikimedia.org/wikipedia/commons/6/69/Les_Joueurs_de_cartes%2C_par_Paul_C%C3%A9zanne.jpg
+Nafea faa ipoipo?,painting,oil on canvas,Paul Gauguin,210000000,1892,https://upload.wikimedia.org/wikipedia/commons/6/61/Paul_Gauguin%2C_Nafea_Faa_Ipoipo%3F_1892%2C_oil_on_canvas%2C_101_x_77_cm.jpg
+Number 17A,painting,oil on fiberboard,Jackson Pollock,211000000,1948,https://upload.wikimedia.org/wikipedia/en/f/f2/Number_17A.jpg
+"No. 6 (Violet, Green and Red)",painting,oil on canvas,Mark Rothko,197000000,1951,https://upload.wikimedia.org/wikipedia/en/0/03/No._6_%28Violet%2C_Green_and_Red%29.jpg
+Masterpiece,painting,oil on canvas,Roy Lichtenstein,168700000,1962,https://upload.wikimedia.org/wikipedia/en/5/53/Masteripiece.jpg
+Portrait of Adele Bloch-Bauer I,painting,"oil, silver & gold leaf on canvas",Gustav Klimt,167800000,1907,https://en.wikipedia.org/wiki/Portrait_of_Adele_Bloch-Bauer_I#/media/File:Gustav_Klimt_046.jpg
+Le Reve,painting,oil on canvas,Pablo Picasso,166700000,1932,https://upload.wikimedia.org/wikipedia/en/9/9d/Le-reve-1932.jpg
+Portrait of Dr. Gachet,painting,oil on canvas,Vincent van Gogh,158200000,1890,https://upload.wikimedia.org/wikipedia/commons/1/1e/Portrait_of_Dr._Gachet.jpg
+Der Schrei der Natur,painting,"oil, tempera, pastel & crayon on cardboard",Edvard Munch,130900000,1895,https://upload.wikimedia.org/wikipedia/commons/c/c5/Edvard_Munch%2C_1893%2C_The_Scream%2C_oil%2C_tempera_and_pastel_on_cardboard%2C_91_x_73_cm%2C_National_Gallery_of_Norway.jpg
+Eight Elvises,painting,silkscreen on canvas,Andy Warhol,116400000,1963,https://upload.wikimedia.org/wikipedia/en/b/be/Eight_Elvises.jpg
+Portrait of Alfonso d'Avalos with a Page,painting,oil on canvas,Titian,95300000,1533,https://upload.wikimedia.org/wikipedia/commons/e/e2/Titian_%28Tiziano_Vecellio%29_%28Italian%29_-_Portrait_of_Alfonso_d%27Avalos%2C_Marquis_of_Vasto%2C_in_Armor_with_a_Page_-_Google_Art_Project.jpg
+Le Bassin Aux Nympheas,painting,oil on canvas,Claude Monet,93700000,1919,https://upload.wikimedia.org/wikipedia/commons/f/fd/Le_bassin_aux_nymph%C3%A9as_-_Claude_Monet.jpg
+Eagle Standing on Pine Tree,painting,watercolor,Qi Baishi,72900000,1946,https://upload.wikimedia.org/wikipedia/commons/8/81/Qi_Baishi_Eagle.jpg
+Zhichuan Resettlement,painting,ink on silk,Wang Meng,69200000,1350,http://images.china.cn/attachement/jpg/site1007/20110605/002564baa0180f5562940c.jpg

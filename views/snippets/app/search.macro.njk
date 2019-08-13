@@ -1,0 +1,50 @@
+{# search & filter form #}
+{% macro searchForm(types, materials, artists) %}
+<fieldset id="search-mp-form" class="search-form">
+    <div class="form-field">
+        <label for="smp-title">Title</label>
+        <input id="smp-title" type="text"/>
+    </div>
+    <div class="form-field">
+        <label for="smp-type">Type</label>
+        <select id="smp-type">
+            <option value="">choose a type</option>
+            {% asyncAll it in types %}
+            <option value="{{ it.id }}">{{ it.name }}</option>
+            {% endall %}
+        </select>
+    </div>
+    <div class="form-field">
+        <label for="smp-mat">Materials</label>
+        <select id="smp-mat">
+            <option value="">choose a material</option>
+            {% asyncAll it in materials %}
+            <option value="{{ it.id }}">{{ it.name }}</option>
+            {% endall %}
+
+        </select>
+    </div>
+    <div class="form-field">
+        <label for="smp-artist">Artist</label>
+        <select id="smp-artist">
+            <option value="">choose an artist</option>
+            {% asyncAll it in artists %}
+            <option value="{{ it.id }}">{{ it.name }}</option>
+            {% endall %}
+        </select>
+    </div>
+    <div class="form-field">
+        <label for="smp-price-min">Min Price</label>
+        <input id="smp-price-min" type="number" step="1000"/>
+    </div>
+    <div class="form-field">
+        <label for="smp-price-max">Max Price</label>
+        <input id="smp-price-max" type="number" step="1000"/>
+    </div>
+    <div>
+        <br/>
+        <button id="smp-submit">Find Matching Masterpieces</button>
+    </div>
+</fieldset>
+{% endmacro %}
+{# search results #}

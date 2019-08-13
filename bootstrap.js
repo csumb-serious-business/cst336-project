@@ -2,46 +2,61 @@ const mysql = require('mysql');
 const json = require('json5');
 const fs = require('fs');
 const parse = require('csv-parse');
-SECRETS = json.parse(fs.readFileSync('secrets/db.json5'));
+const SECRETS = json.parse(fs.readFileSync('secrets/db.json5'));
 
 
 const CONNECTION = mysql.createConnection({
     host: 'localhost',
-    database: 'serious_cst336',
     user: SECRETS.user,
     password: SECRETS.password,
-    multipleStatements: true
+    multipleStatements: true,
 });
 
+// database: 'serious_cst336',
 
-function populateOLTP() {
+/**
+ * populates the OLTP (biz tables) with data from artwork.csv
+ * @param fullRebuild if true clear (DROP) the existing database
+ * and execute a full rebuild from the csv file
+ */
+function main(fullRebuild = false) {
+    if (fullRebuild) {
+        console.log(`fully rebuilding the database`);
+        db('sql/oltp/create-schema.sql');
+    }
     fs.createReadStream('sql/data/artwork.csv')
-        .pipe(parse({delimiter: ','}, _procCSV))
+        .pipe(parse({delimiter: ','}, _procCSV));
 }
 
-function _procCSV(err, data) {
+/**
+ * processes a csv file, using its data to populate the OLTP database
+ * @param err an error passed by the calling read stream
+ * @param data the data returned by the calling read stream
+ * @private
+ */
+async function _procCSV(err, data) {
     if (err) {
         console.log(`error: ${err}`);
         return;
     }
 
     console.log(`creating temp_art table`);
-    db('sql/oltp/temp-art-create.sql');
+    await db('sql/oltp/temp-art-create.sql');
 
 
     console.log(`populating temp_art table from csv contents`);
-    data.shift(); // skip header row
+    await data.shift(); // skip header row
     data.forEach(line => {
-        console.log(`line: ${line}`);
+        // console.log(`line: ${line}`);
         db('sql/oltp/temp-art-insert.ps.sql', [...line])
     });
 
     console.log(`populating DB from temp_art table`);
-    db('sql/oltp/temp-art-to-db.sql');
+    await db('sql/oltp/temp-art-to-db.sql');
 
     // remove temp art
     console.log(`remove temp_art table`);
-    db('sql/oltp/temp-art-remove.sql')
+    await db('sql/oltp/temp-art-remove.sql')
 }
 
 /**
@@ -65,4 +80,4 @@ function db(sqlFile, params = []) {
 }
 
 
-populateOLTP();
+main(false);

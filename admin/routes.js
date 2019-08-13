@@ -5,15 +5,16 @@ const router = express.Router();
 router.use('/admin', express.static('admin/public'));
 
 /* app routes
-* DON'T USE THESE PATHS:
-*    /    -- root path
-*    /*   -- catch all path
-* */
+ * DON'T USE THESE PATHS:
+ *    /    -- root path
+ *    /*   -- catch all path
+ * */
 router.get('/admin',
-    async (req, res) => res.render('admin/root.njk', {
+    async(req, res) => res.render('admin/root.njk', {
         /* todo add app forms */
-        example: await {/* some slow callback */}
+        example: await { /* some slow callback */ }
     }));
+0
 
 // example of passing a function instead of anonymous
 router.get('/example', example);

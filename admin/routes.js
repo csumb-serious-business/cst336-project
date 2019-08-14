@@ -8,10 +8,19 @@ const session = require('express-session');
 // router.set('view engine', 'njk');
 
 //serve static files
-router.use('/admin', express.static('admin/public'));
-module.exports = router;
+// router.use('/admin', express.static('admin/public'));
 
-const tools = require("./functions").isAuthenticated;
+router.use('/admin', express.static('admin/public'), function(req, res, next) {
+    next()
+})
+
+// const tools = require("admin/functions");
+// const tools = require("/admin/functions");
+// const tools = require("./admin/functions");
+const tools = require("../admin/functions");
+// const tools = require("./functions");
+// const tools = require("../functions");
+
 
 
 /* app routes
@@ -33,11 +42,8 @@ function example(req, res) {
     return res.render('admin/root.njk', {});
 }
 //routes
-// server.use(express.urlencoded({ extended: true }));
 router.use(express.urlencoded({ extended: true }));
 
-
-// server.post("login", async function(req, res) {
 router.post("login", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -67,23 +73,19 @@ router.post("login", async function(req, res) {
     }
 });
 
-// server.get("/myAccount", tools, function(req, res) {
-// router.get("/myAccount", tools, function(req, res) {
-//     if (req.session.authenticated) {
-//         res.render("admin");
-//     } else {
-//         res.redirect("login");
-//     }
-// });
+router.get("/myAccount", tools.isAuthenticated, function(req, res) {
+    if (req.session.authenticated) {
+        res.render("admin");
+    } else {
+        res.redirect("login");
+    }
+});
 
-// server.get("/logout", function(req, res) {
 router.get("/logout", function(req, res) {
     req.session.destroy();
     res.redirect("login");
 });
 
-// router.get("/login", function(req, res) {
-//     res.render("login");
-// });
+module.exports = router;
 
-// module.exports = router;
+`     `

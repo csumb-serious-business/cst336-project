@@ -59,3 +59,8 @@ extra:
 + gulp
 + tests
 + favicon.ico  
+
+Wednesday Morning Need Help
+Lines 50-53 in search.macro.njk
+Lines 76-82 in admin/routes.js
+Error: Error: Route.get() requires a callback function but got a [object Undefined]

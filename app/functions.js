@@ -33,7 +33,7 @@ function checkUsername(username) {
 
 function isAuthenticated(req, res, next) {
     if (!req.session.authenticated) {
-        res.redirect('common/views/login.njk');
+        res.redirect('login');
     } else {
         next()
     }

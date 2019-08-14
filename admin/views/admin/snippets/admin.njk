@@ -1,0 +1,14 @@
+{# Admin page #}
+
+{% extends base %}
+
+{% block main %}
+    <h1>Welcome!</h1><br>
+    <h1>Logged in as Admin</h1>
+
+    {# Add database stuff here#}
+
+    <form action="/logout">
+        <button>Logout</button>
+    </form>
+{% endblock %}

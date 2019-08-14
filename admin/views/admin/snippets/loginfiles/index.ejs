@@ -1,8 +1,13 @@
-{# Admin login page #}
+<!DOCTYPE html>
 
-{% extends base %}
+<head>
+    <html lang="en">
+    <meta charset="UTF-8">
+    <title>Login Screen</title>
+</head>
 
-{% block main %}
+<body>
+    <!--Create the login form with 3 elements -->
     <h1>Login Screen</h1>
     <form method="POST">
         Username: <input type="text" name="username"><br> Password: <input type="password" name="password"><br>
@@ -11,4 +16,4 @@
     <% if(typeof loginError !="undefined" && loginError){ %>
         <h3 class="error">Wrong credentials!</h3>
         <% } %>
-{% endblock %}
+</body>

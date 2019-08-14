@@ -97,3 +97,6 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+#login .ejs files that were from the authentication lab
+loginfiles/

@@ -31,7 +31,7 @@ server.use(app);
 server.use(express.urlencoded({ extended: true }));
 
 
-server.post("/", async function(req, res) {
+server.post("common/views/login.njk", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -53,25 +53,23 @@ server.post("/", async function(req, res) {
 
     if (username == 'admin' && passwordMatch) {
         req.session.authenticated = true;
-        // res.render("welcome");
-        res.render("admin/root.njk"); //replaced welcome for admin/root.njk
+        res.render("common/admin.njk");
     } else {
-        res.render("index", { "loginError": true });
+        res.render("common/views/login.njk", { "loginError": true });
     }
 });
 
 server.get("/myAccount", isAuthenticated, function(req, res) {
     if (req.session.authenticated) {
-        // res.render("account");
-        res.render("admin/root.njk"); //replaced account for admin/root.njk
+        res.render("common/admin.njk");
     } else {
-        res.redirect("/");
+        res.redirect("common/views/login.njk");
     }
 });
 
 server.get("/logout", function(req, res) {
     req.session.destroy();
-    res.redirect("/");
+    res.redirect("common/views/login.njk");
 });
 
 /**
@@ -106,15 +104,10 @@ function checkUsername(username) {
         }); //connect
     }); //promise
 }
-/**
- * 
- * @param {*} req 
- * @param {*} res 
- * @param {*} next 
- */
+
 function isAuthenticated(req, res, next) {
     if (!req.session.authenticated) {
-        res.redirect('/');
+        res.redirect('common/views/login.njk');
     } else {
         next()
     }

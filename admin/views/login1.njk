@@ -8,4 +8,8 @@
         Username: <input type="text" name="username"><br> Password: <input type="password" name="password"><br>
         <button>Login!</button>
     </form>
+    {# {% if loginError not undefined and loginError %} #}
+    {% if loginError not undefined %}
+        <h3 class="error">Wrong credentials!</h3>
+    {% endif %}
 {% endblock %}

@@ -2,13 +2,16 @@ const express = require("express");
 const router = express.Router();
 
 const app = require("../app.js");
-var server = express();
-server.set('view engine', 'njk');
+// var server = express();
+const session = require('express-session');
+// server.set('view engine', 'njk');
+// router.set('view engine', 'njk');
 
 //serve static files
 router.use('/admin', express.static('admin/public'));
+module.exports = router;
 
-const tools = require("./functions");
+const tools = require("./functions").isAuthenticated;
 
 
 /* app routes
@@ -30,10 +33,12 @@ function example(req, res) {
     return res.render('admin/root.njk', {});
 }
 //routes
-server.use(express.urlencoded({ extended: true }));
+// server.use(express.urlencoded({ extended: true }));
+router.use(express.urlencoded({ extended: true }));
 
 
-server.post("login", async function(req, res) {
+// server.post("login", async function(req, res) {
+router.post("login", async function(req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
@@ -62,7 +67,8 @@ server.post("login", async function(req, res) {
     }
 });
 
-// server.get("/myAccount", tools.isAuthenticated, function(req, res) {
+// server.get("/myAccount", tools, function(req, res) {
+// router.get("/myAccount", tools, function(req, res) {
 //     if (req.session.authenticated) {
 //         res.render("admin");
 //     } else {
@@ -70,8 +76,14 @@ server.post("login", async function(req, res) {
 //     }
 // });
 
-server.get("/logout", function(req, res) {
+// server.get("/logout", function(req, res) {
+router.get("/logout", function(req, res) {
     req.session.destroy();
     res.redirect("login");
 });
-module.exports = router;
+
+// router.get("/login", function(req, res) {
+//     res.render("login");
+// });
+
+// module.exports = router;

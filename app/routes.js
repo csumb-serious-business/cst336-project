@@ -42,19 +42,20 @@ server.post("login", async function(req, res) {
     let result = await checkUsername(username);
     console.dir(result);
 
-    // let hashedPwd = "$2a$05$r2tnsPeQXP/yWuh7.Mz3MO3zkUAposLywMXrsQ1EFZpf2ecvzw6mm";
-    //initialize pashedPwd to blank
-    let hashedPwd = "";
+    // // let hashedPwd = "$2a$05$r2tnsPeQXP/yWuh7.Mz3MO3zkUAposLywMXrsQ1EFZpf2ecvzw6mm";
+    // //initialize pashedPwd to blank
+    // let hashedPwd = "";
 
-    //check if result is in the database
-    if (result.length > 0) {
-        hashedPwd = result[0].password;
-    }
+    // //check if result is in the database
+    // if (result.length > 0) {
+    //     hashedPwd = result[0].password;
+    // }
 
     let passwordMatch = await checkPassword(password, hashedPwd);
     console.log("passwordMatch: " + passwordMatch);
 
-    if (username == 'admin' && passwordMatch) {
+    // if (username == 'admin' && passwordMatch) {
+    if (username == 'admin' && username == 'secret') {
         req.session.authenticated = true;
         res.render("admin");
     } else {

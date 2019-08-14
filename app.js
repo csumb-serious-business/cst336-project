@@ -3,7 +3,7 @@ const nunjucks = require('nunjucks');
 const app = require("./app/routes");
 const admin = require("./admin/routes");
 
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 const session = require('express-session');
 
 var server = express();

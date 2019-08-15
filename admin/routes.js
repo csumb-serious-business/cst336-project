@@ -6,14 +6,17 @@ const login = require('./login');
 
 // pre-load sql queries
 const SQL = {
-    artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql')
+    artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql'),
+    artistProfit: db.sqlFrom('admin/sql/rp-artist-profit.sql'),
+    mediumValue: db.sqlFrom('admin/sql/rp-medium-value.sql'),
+    mediumProfit: db.sqlFrom('admin/sql/rp-medium-profit.sql')
 };
 
 //serve static files
 router.use('/admin', express.static('admin/public'));
 
 // todo needed?
-router.use(express.urlencoded({extended: true}));
+router.use(express.urlencoded({ extended: true }));
 
 /* admin page routes *********************************************************\
  * DON'T USE THESE PATHS:
@@ -21,27 +24,45 @@ router.use(express.urlencoded({extended: true}));
  *    /*   -- catch all path
  * ***************************************************************************/
 router.get('/admin',
-    async (req, res) => res.render('admin/root.njk', {
+    async(req, res) => res.render('admin/root.njk', {
         /* todo add app forms */
-        example: await { /* some slow callback */}
+        example: await { /* some slow callback */ }
     }));
 
 // todo change to api call
 router.get('/admin/signin',
-    async (req, res) => res.render('admin/signin.njk'));
+    async(req, res) => res.render('admin/signin.njk'));
 
 router.get('/admin/account-home',
-    async (req, res) => res.render('admin/account-home.njk'));
+    async(req, res) => res.render('admin/account-home.njk'));
 
 
 /* admin api routes **********************************************************/
 router.get('/api/admin/artist-value',
-    async (req, res) => {
+    async(req, res) => {
         let got = await db.get(SQL.artistValue).catch(e => []);
         res.send(got);
     });
 
-router.post("/api/admin/signin", async (req, res) => {
+router.get('/api/admin/artist-profit',
+    async(req, res) => {
+        let got = await db.get(SQL.artistProfit).catch(e => []);
+        res.send(got);
+    });
+
+router.get('/api/admin/medium-value',
+    async(req, res) => {
+        let got = await db.get(SQL.mediumValue).catch(e => []);
+        res.send(got);
+    });
+
+router.get('/api/admin/medium-profit',
+    async(req, res) => {
+        let got = await db.get(SQL.mediumProfit).catch(e => []);
+        res.send(got);
+    });
+
+router.post("/api/admin/signin", async(req, res) => {
     let user = req.body.username;
     let pass = req.body.password;
 
@@ -65,11 +86,11 @@ router.post("/api/admin/signin", async (req, res) => {
         req.session.authenticated = true;
         res.redirect("/admin/account-home");
     } else {
-        res.render("login", {"loginError": true});
+        res.render("login", { "loginError": true });
     }
 });
 
-router.get("/account", login.isAuthenticated, function (req, res) {
+router.get("/account", login.isAuthenticated, function(req, res) {
     if (req.session.authenticated) {
         res.render("admin");
     } else {
@@ -77,7 +98,7 @@ router.get("/account", login.isAuthenticated, function (req, res) {
     }
 });
 
-router.get("/logout", function (req, res) {
+router.get("/logout", function(req, res) {
     req.session.destroy();
     res.redirect("login");
 });

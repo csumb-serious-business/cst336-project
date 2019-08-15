@@ -20,8 +20,65 @@ $(document).ready(() => {
             $('#rp-av-modal').modal('show');
         })
     })
-});
 
+
+    //todo impl pagination or infinite scroll
+    $('#rp-artist-profit').on('click', () => {
+
+        // console.log(JSON.stringify(params));
+        // call the api
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/artist-profit'
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate table
+            popReportTable(res);
+
+            $('#rp-ap-modal').modal('show');
+        })
+    })
+
+    //todo impl pagination or infinite scroll
+    $('#rp-medium-value').on('click', () => {
+
+        // console.log(JSON.stringify(params));
+        // call the api
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/medium-value'
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate table
+            popReportTable(res);
+
+            $('#rp-mv-modal').modal('show');
+        })
+    })
+
+    //todo impl pagination or infinite scroll
+    $('#rp-medium-profit').on('click', () => {
+
+        // console.log(JSON.stringify(params));
+        // call the api
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/medium-profit'
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate table
+            popReportTable(res);
+
+            $('#rp-mp-modal').modal('show');
+        })
+    })
+});
 
 const popReportTable = data => {
     let tableHeader = $('#header-row');
@@ -45,22 +102,21 @@ const popReportTable = data => {
 
     // populate data item rows
     data.forEach(d => {
-            // skip the total row
-            if (d.name !== null) {
-                let rowData = '';
+        // skip the total row
+        if (d.name !== null) {
+            let rowData = '';
 
-                console.log(`d: ${JSON.stringify(d)}`);
+            console.log(`d: ${JSON.stringify(d)}`);
 
-                // add columns to table
-                columns.forEach(c =>
-                    rowData += (`<td>${d[c]}</td>`)
-                );
+            // add columns to table
+            columns.forEach(c =>
+                rowData += (`<td>${d[c]}</td>`)
+            );
 
-                tableRows.append(`<tr class="table-row">${rowData}</tr>`)
+            tableRows.append(`<tr class="table-row">${rowData}</tr>`)
 
-            }
         }
-    );
+    });
 
     // populate the total row
     let totals = data[data.length - 1];
@@ -71,12 +127,10 @@ const popReportTable = data => {
 
     // add columns to total row
     columns.forEach(c => {
-            let v = totals[c] == null ? 'TOTAL' : totals[c];
-            rowData += (`<td><strong>${v}</strong></td>`)
-        }
-    );
+        let v = totals[c] == null ? 'TOTAL' : totals[c];
+        rowData += (`<td><strong>${v}</strong></td>`)
+    });
     tableFooter.append(`<tr class="table-row">${rowData}</tr>`)
 
 
 };
-

@@ -1,5 +1,5 @@
 {# search & filter form #}
-{% macro searchForm(types, materials, artists) %}
+{% macro search(types, materials, artists) %}
 <fieldset id="search-mp-form" class="search-form">
     <div class="form-field">
         <label for="smp-title">Title</label>
@@ -34,22 +34,29 @@
         </select>
     </div>
     <div class="form-field">
-        <label for="smp-price-min">Min Price</label>
-        <input id="smp-price-min" type="number" step="1000"/>
+        <label for="smp-price-min">Min Price ($)</label>
+        {# todo set min price to min price in db #}
+        <input id="smp-price-min" type="number" step="1000000" min="0"/>
     </div>
     <div class="form-field">
-        <label for="smp-price-max">Max Price</label>
-        <input id="smp-price-max" type="number" step="1000"/>
+        <label for="smp-price-max">Max Price ($)</label>
+        {# todo set max price to max price in db #}
+        <input id="smp-price-max" type="number" step="1000000"/>
     </div>
+    <div class="form-field">
+        <label for="smp-result-count">Type</label>
+        <select id="smp-result-count">
+            <option value="">View</option>
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+        </select>
+    </div>
+
+
     <div>
         <br/>
         <button id="smp-submit">Find Matching Masterpieces</button>
-    </div>
-    <div>
-        <br/>
-        <a href="common/views/login.njk">
-            <button id="smp-adminlogin">Admin Login</button>
-        </a>
     </div>
 </fieldset>
 {% endmacro %}

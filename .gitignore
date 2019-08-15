@@ -7,6 +7,9 @@ secrets
 # open office tempfiles
 .~lock.*
 
+# package-lock
+package-lock.json
+
 ### Copied from: https://github.com/github/gitignore/blob/master/Node.gitignore ###
 
 # Logs

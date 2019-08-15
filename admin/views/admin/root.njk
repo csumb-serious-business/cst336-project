@@ -1,9 +1,9 @@
-{% extends "../../../common/views/base.njk" %}
+{% extends "base.njk" %}
 {% set title="Sample Project home" %}
 
 {% block main %}
-rows are:<br/>
-{% asyncAll row in rows %}
-{{ row.title }}<br/>
-{% endall %}
+    <h1>Welcome!</h1><br>
+    <a>SIGN UP (not impl)</a>
+    &nbsp;or&nbsp;
+    <a href="/admin/signin">SIGN IN</a>
 {% endblock %}

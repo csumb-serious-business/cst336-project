@@ -3,13 +3,11 @@ const nunjucks = require('nunjucks');
 const app = require("./app/routes");
 const admin = require("./admin/routes");
 
-const bcrypt = require('bcrypt');
 const session = require('express-session');
 
-var server = express();
+const server = express();
 
 server.set('view engine', 'njk');
-
 
 nunjucks.configure(['common/views', 'admin/views', 'app/views'], {
     autoescape: true,
@@ -27,6 +25,10 @@ server.use('/', express.static('common/public'));
 server.use(admin);
 server.use(app);
 
+// catch all route
+server.get('/*', function (req, res) {
+    return res.render('404');
+});
 
 
 var port = 33333;

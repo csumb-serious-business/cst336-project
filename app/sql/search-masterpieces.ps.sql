@@ -1,3 +1,4 @@
+-- prepared statement
 SELECT *
 FROM `inventory` i
          JOIN `masterpiece` m

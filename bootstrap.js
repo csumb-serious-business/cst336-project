@@ -79,5 +79,6 @@ function db(sqlFile, params = []) {
         })
 }
 
+// todo add stored procedures to bootstrap
 
 main(true);

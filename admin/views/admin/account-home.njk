@@ -2,12 +2,25 @@
 {% set title="Account Home" %}
 
 {% block main %}
-    <h1>Welcome!</h1><br>
-    <h1>Logged in as Admin</h1>
 
-    {# Add database stuff here#}
+    {# todo use macro to parameterize #}
+    {# todo session auth to access #}
+    <p>Logged in as: <strong>Admin</strong>&nbsp;&nbsp;&nbsp;<a href="#">Logout</a></p>
 
-    <form action="/logout">
-        <button>Logout</button>
-    </form>
+    {# todo Add database stuff here#}
+    {# create masterpiece #}
+
+    {# edit/delete masterpiece#}
+
+    {# reports #}
+    <h3>Reports</h3>
+    <p><a href="#" id="rp-artist-value">inventory value by artist</a></p>
+    <p><a href="#" id="rp-medium-value">inventory value by medium</a></p>
+    {# todo rp-artist-profit #}
+    {# todo rp-medium-profit #}
+    <script src="/admin/js/admin-client.js"></script>
+
+{% endblock %}
+{% block modals %}
+    {% include "admin/snippets/rp-av-modal.njk" %}
 {% endblock %}

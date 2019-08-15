@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require('../common/db');
 
-
+// pre-load sql queries
 const SQL = {
     titles: db.sqlFrom('app/sql/ms-titles.sql'),
     types: db.sqlFrom('app/sql/ms-types.sql'),

@@ -1,6 +1,13 @@
 const express = require("express");
-const login = require('./login');
 const router = express.Router();
+const db = require('../common/db');
+
+const login = require('./login');
+
+// pre-load sql queries
+const SQL = {
+    artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql')
+};
 
 //serve static files
 router.use('/admin', express.static('admin/public'));
@@ -19,11 +26,21 @@ router.get('/admin',
         example: await { /* some slow callback */}
     }));
 
+// todo change to api call
 router.get('/admin/signin',
     async (req, res) => res.render('admin/signin.njk'));
 
+router.get('/admin/account-home',
+    async (req, res) => res.render('admin/account-home.njk'));
+
 
 /* admin api routes **********************************************************/
+router.get('/api/admin/artist-value',
+    async (req, res) => {
+        let got = await db.get(SQL.artistValue).catch(e => []);
+        res.send(got);
+    });
+
 router.post("/api/admin/signin", async (req, res) => {
     let user = req.body.username;
     let pass = req.body.password;

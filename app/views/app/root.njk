@@ -4,12 +4,11 @@
 {% extends "base.njk" %}
 {% set title="Serious Masterpieces" %}
 
-{% block nav %}{% include "app/snippets/nav.njk" %}{% endblock %}
 {% block header %}<h1>Serious Masterpieces</h1>{% endblock %}
 {% block main %}
 
     {{ search(types, materials, artists) }}
-    <script src="app/js/app-client.js"></script>
+    <script src="/app/js/app-client.js"></script>
     {% include "app/snippets/ms-results.njk" %}
 
 {% endblock %}

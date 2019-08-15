@@ -1,4 +1,4 @@
--- prepared statement
+-- an example prepared statement -- not used
 SELECT *
 FROM `inventory` i
          JOIN `masterpiece` m

@@ -11,16 +11,16 @@ CREATE PROCEDURE search_masterpieces(IN _title VARCHAR(250),
                                      IN _price_max INT,
                                      IN _limit INT)
 BEGIN
-    SELECT
-        -- i.id         as iid,
-        -- m.id         as mid,
-        m.title                              as title,
-        ar.name                              as artist,
-        m.year                               as year,
-        ty.name                              as type,
-        ma.name                              as materials,
-        CONCAT('$', FORMAT(i.sale_price, 2)) as price,
-        m.pic_src                            as pic_src
+    SELECT i.id                                 as iid,
+           -- m.id         as mid,
+           m.pic_src                            as piece,
+           m.title                              as title,
+           ar.name                              as artist,
+           m.year                               as year,
+           ty.name                              as type,
+           ma.name                              as materials,
+           CONCAT('$', FORMAT(i.sale_price, 2)) as price
+
     FROM `inventory` i
              JOIN `masterpiece` m ON i.`masterpiece_id` = m.`id`
              JOIN `type` ty ON ty.`id` = m.`type_id`

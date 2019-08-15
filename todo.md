@@ -21,7 +21,7 @@ Docs:
 - Description
 - Mockup
 - DB Schema
-- Screenshots - 
+- Screenshots
 
 DB
 - ✓ 4+ tables

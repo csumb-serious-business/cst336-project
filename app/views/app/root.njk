@@ -1,5 +1,5 @@
 {# app root #}
-{% from "app/snippets/search.macro.njk" import search %}
+{% from "app/snippets/ms-search.macro.njk" import search %}
 
 {% extends "base.njk" %}
 {% set title="Serious Masterpieces" %}
@@ -9,18 +9,9 @@
 {% block main %}
 
     {{ search(types, materials, artists) }}
-    <script src="app/js/search-masterpieces.js"></script>
-
-    <h2>Search Results</h2>
-    <table id="sm-table" class="table table-striped">
-        <thead class="thead">
-        <tr id="header-row">
-            <td></td>
-        </tr>
-        </thead>
-        <tbody id="data-rows"></tbody>
-    </table>
+    <script src="app/js/app-client.js"></script>
+    {% include "app/snippets/ms-results.njk" %}
 
 {% endblock %}
 
-{% block modals %}{% include "app/snippets/masterpiece-modal.njk" %}{% endblock %}
+{% block modals %}{% include "app/snippets/mi-modal.njk" %}{% endblock %}

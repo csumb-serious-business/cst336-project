@@ -50,3 +50,7 @@ form {
 .form-span {
     margin-bottom: .5em;
 }
+
+#mi-image {
+    max-width: 80% ;
+}

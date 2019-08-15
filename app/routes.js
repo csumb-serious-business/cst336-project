@@ -1,15 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const db = require('../common/db');
-const common = require('../common/common');
 
 
 const SQL = {
-    titles: db.sqlFrom('app/sql/get-titles.sql'),
-    types: db.sqlFrom('app/sql/get-types.sql'),
-    materials: db.sqlFrom('app/sql/get-materials.sql'),
-    artists: db.sqlFrom('app/sql/get-artists.sql'),
-    search: db.sqlFrom('app/sql/call-smp.sql')
+    titles: db.sqlFrom('app/sql/ms-titles.sql'),
+    types: db.sqlFrom('app/sql/ms-types.sql'),
+    materials: db.sqlFrom('app/sql/ms-materials.sql'),
+    artists: db.sqlFrom('app/sql/ms-artists.sql'),
+    search: db.sqlFrom('app/sql/ms-search-call.sql'),
+    info: db.sqlFrom('app/sql/mi-details.ps.sql')
 };
 
 //serve static files
@@ -32,8 +32,13 @@ router.get('/',
 router.get('/api/app/search-masterpieces',
     async (req, res) => {
         let got = await db.get(SQL.search, req.query.params).catch(e => []);
-        let conv = common.arrayConvert(got[0]);
-        // console.log(`db: ${JSON.stringify(conv)}`);
+        res.send(got[0]);
+    }
+);
+
+router.get('/api/app/masterpiece-info',
+    async (req, res) => {
+        let got = await db.get(SQL.info, [req.query.iid]).catch(e => []);
         res.send(got[0]);
     }
 );

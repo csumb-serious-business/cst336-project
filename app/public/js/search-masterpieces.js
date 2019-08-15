@@ -1,4 +1,7 @@
 $(document).ready(() => {
+    // disable the form
+    $('form').submit(e => e.preventDefault());
+
     //todo impl pagination or infinite scroll
     $('#smp-submit').on('click', () => {
         // gather the values
@@ -22,11 +25,10 @@ $(document).ready(() => {
                 params: params
             }
         }).done((res, status) => {
+            // put result on the page
             console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
-            populateTable(res[0])
+            populateTable(res)
         })
-        // put result on the page
-
     })
 });
 
@@ -46,20 +48,49 @@ const populateTable = data => {
     tableRows.empty();
 
     if (data.length <= 0) {
-        tableHeader.append(`<td>Query yielded 0 results.</td>`);
+        tableHeader.append(`<td>Search yielded 0 results.</td>`);
         return;
     }
 
     // populate header row
     let columns = Object.keys(data[0]);
-    columns.forEach(c =>
-        tableHeader.append(`<td>${c.replace('_', ' ')}</td>`));
 
-    // todo if item ends in .jpg, make it an image
+
+    columns.forEach(c => {
+        // it it is the inventory id, capture it, but don't display
+        if (c !== 'iid') {
+            tableHeader.append(`<td>${c.replace('_', ' ')}</td>`)
+        }
+    });
+
+
     // populate data item rows
     data.forEach(i => {
         let rowData = '';
-        columns.forEach(c => rowData += (`<td>${i[c]}</td>`));
-        tableRows.append(`<tr>${rowData}</tr>`)
+
+        console.log(`i: ${JSON.stringify(i)}`);
+        for (let key in i) {
+            // if item ends in .jpg, make it an image
+            if (typeof i[key] === 'string' && i[key].endsWith('.jpg')) {
+                i[key] = `<img src="${i[key]}" alt="${i[key]}" height="200">`;
+            }
+        }
+
+        // add non-iid colums to table
+        columns.forEach(c => {
+            if (c !== 'iid') {
+                rowData += (`<td>${i[c]}</td>`)
+            }
+        });
+
+        tableRows.append(`<tr class="table-row" id="iid-${i['iid']}">${rowData}</tr>`)
+    });
+
+    // wireup event handler for popover
+    $('.table-row').on('click', function () {
+        console.log(`popover: ${this.id}`);
+        $('#mp-modal').modal('show');
+
+
     })
 };

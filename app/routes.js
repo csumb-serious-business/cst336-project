@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const db = require('../common/db');
+const common = require('../common/common');
 
 
 const SQL = {
@@ -29,9 +30,12 @@ router.get('/',
 
 /* app api routes ************************************************************/
 router.get('/api/app/search-masterpieces',
-    async (req, res) => res.send(await db.get(SQL.search, req.query.params)
-        .catch(e => [])
-    )
+    async (req, res) => {
+        let got = await db.get(SQL.search, req.query.params).catch(e => []);
+        let conv = common.arrayConvert(got[0]);
+        // console.log(`db: ${JSON.stringify(conv)}`);
+        res.send(got[0]);
+    }
 );
 
 

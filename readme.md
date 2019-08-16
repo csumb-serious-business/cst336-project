@@ -1,3 +1,5 @@
+### note -- to test admin features: go to /admin/account-home
+
 ### application setup
 
 add file & dir: secrets/db.json5:
@@ -21,6 +23,8 @@ to
 main(true, true);
 ```
 see main function docs for more info
+
+### dev setup
 
 webstorm - install twig plugin & associate with .njk
 

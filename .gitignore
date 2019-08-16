@@ -103,4 +103,4 @@ typings/
 
 #login .ejs files that were from the authentication lab
 loginfiles/
-/secrets/
+# /secrets/

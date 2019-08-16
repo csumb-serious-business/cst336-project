@@ -29,7 +29,11 @@ $(document).ready(() => {
             // console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
             populateTable(res)
         })
-    })
+    });
+
+    $('#sc-add').on('click',
+        () => console.log(`adding this item to cart`)
+    )
 });
 
 /**
@@ -97,7 +101,7 @@ const populateTable = data => {
             }
         }).done((res, status) => {
             // put result on the page
-            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+            console.log(`details res: ${JSON.stringify(res)}, stat: ${status}`);
             $('#mi-image').attr('src', res.piece);
             $('#mi-title').text(res.title);
             $('#mi-price').text(res.price);
@@ -105,12 +109,11 @@ const populateTable = data => {
             $('#mi-year').text(res.year);
             $('#mi-type').text(res.type);
             $('#mi-materials').text(res.materials);
+            $('#mi-iid').val(res.iid);
             // populate and show the modal
             $('.modal-dialog').modal('hide');
             $('#mp-modal').modal('show');
         });
-
-
     })
 };
 

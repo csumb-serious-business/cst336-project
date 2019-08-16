@@ -1,4 +1,4 @@
-### setup
+### application setup
 
 add file & dir: secrets/db.json5:
 
@@ -8,6 +8,8 @@ add file & dir: secrets/db.json5:
     password: 'password-for-user'
 }
 ```
+
+run `bootstrap.js` to initialize the DB with schema, stored procedures and data
 
 webstorm - install twig plugin & associate with .njk
 

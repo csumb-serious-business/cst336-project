@@ -6,7 +6,8 @@ const login = require('./login');
 
 // pre-load sql queries
 const SQL = {
-    artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql')
+    artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql'),
+    invItemCreate: db.sqlFrom('admin/sql/inv-item-create.sql'),
 };
 
 //serve static files
@@ -35,12 +36,21 @@ router.get('/admin/account-home',
 
 
 /* admin api routes **********************************************************/
+//// reports
 router.get('/api/admin/artist-value',
     async (req, res) => {
         let got = await db.get(SQL.artistValue).catch(e => []);
         res.send(got);
     });
 
+//// crud
+router.get('/api/admin/inv-item-create',
+    async (req, res) => {
+        let got = await db.get(SQL.invItemCreate, req.query.params).catch(e => []);
+        res.send(got);
+    });
+
+//// auth
 router.post("/api/admin/signin", async (req, res) => {
     let user = req.body.username;
     let pass = req.body.password;

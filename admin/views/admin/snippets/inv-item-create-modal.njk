@@ -1,0 +1,54 @@
+<div class="modal" tabindex="-1" role="dialog" id="inv-item-create-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><strong>Create Inventory Item</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="search-mp-form" class="search-form" action="#">
+                    <fieldset class="form-section">
+                        <div class="form-item">
+                            <label for="inv-item-title">Title</label>
+                            <input id="inv-item-title" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-type">Type</label>
+                            <input id="inv-item-type" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-mat">Materials</label>
+                            <input id="inv-item-mat" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-artist">Artist</label>
+                            <input id="inv-item-artist" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-year">Year Created</label>
+                            <input id="inv-item-year" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-pic-src">Image URL</label>
+                            <input id="inv-item-pic-src" type="text" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-value">Value ($)</label>
+                            <input id="inv-item-value" type="number" step="1000000" min="0" class="form-control"/>
+                        </div>
+                        <div class="form-item">
+                            <label for="inv-item-req-price">Requisition Price ($)</label>
+                            <input id="inv-item-req-price" type="number" step="1000000" min="0" class="form-control"/>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="inv-item-create-submit">Create Item</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

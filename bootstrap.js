@@ -56,7 +56,12 @@ async function _procCSV(err, data) {
 
     // remove temp art
     console.log(`remove temp_art table`);
-    await db('db/oltp/temp-art-remove.sql')
+    await db('db/oltp/temp-art-remove.sql');
+
+    // define stored procedures
+    console.log(`adding stored procedures`);
+    await db('db/stored-procs/inv-item-create.sp.sql');
+    await db('db/stored-procs/search-masterpieces.sp.sql');
 }
 
 /**
@@ -66,7 +71,14 @@ async function _procCSV(err, data) {
  * @return result
  */
 function db(sqlFile, params = []) {
-    let sql = fs.readFileSync(sqlFile, 'utf-8');
+    let read = fs.readFileSync(sqlFile, 'utf-8');
+    // can't use mysql delimiters
+    // see: https://github.com/mysqljs/mysql/issues/1683
+
+    // clear delimiters (and pray)
+    let sql = read.toString()
+        .replace(/DELIMITER\s..;/gm, '')
+        .replace(/\$\$/gm, ';').replace(/DELIMITER\s;/gm, '');
 
     // console.log(`db: ${db}, params: ${params}`);
     CONNECTION.query(sql, params,
@@ -78,7 +90,5 @@ function db(sqlFile, params = []) {
             return result;
         })
 }
-
-// todo add stored procedures to bootstrap
 
 main(true);

@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    // disable form submissions
+    // disable forms
     $('form').submit(e => e.preventDefault());
 
     //todo impl pagination or infinite scroll

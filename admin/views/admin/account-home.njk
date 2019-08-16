@@ -8,19 +8,22 @@
     <p>Logged in as: <strong>Admin</strong>&nbsp;&nbsp;&nbsp;<a href="#">Logout</a></p>
 
     {# todo Add database stuff here#}
-    {# create masterpiece #}
+    <h3>Inventory Management</h3>
+    <p><a href="#" id="inv-item-create">create inventory item</a></p>
 
-    {# edit/delete masterpiece#}
+    {# edit/delete masterpiece #}
 
     {# reports #}
     <h3>Reports</h3>
     <p><a href="#" id="rp-artist-value">inventory value by artist</a></p>
+    {# todo rp-medium-value #}
     <p><a href="#" id="rp-medium-value">inventory value by medium</a></p>
     {# todo rp-artist-profit #}
     {# todo rp-medium-profit #}
-    <script src="/admin/js/admin-client.js"></script>
+    <script src="/admin/js/account-home.js"></script>
 
 {% endblock %}
 {% block modals %}
+    {% include "admin/snippets/inv-item-create-modal.njk" %}
     {% include "admin/snippets/rp-av-modal.njk" %}
 {% endblock %}

@@ -1,8 +1,46 @@
 $(document).ready(() => {
+    //todo (won't) impl pagination or infinite scroll for tables
+
     // disable form submissions
     $('form').submit(e => e.preventDefault());
 
-    //todo impl pagination or infinite scroll
+    //// inventory management
+    $('#inv-item-create').on('click', () => {
+        $('#inv-item-create-modal').modal('show');
+    });
+
+    $('#inv-item-create-submit').on('click', () => {
+        // get values from form
+        const params = [
+            'inv-item-title',
+            'inv-item-type',
+            'inv-item-mat',
+            'inv-item-artist',
+            'inv-item-year',
+            'inv-item-pic-src',
+            'inv-item-value',
+            'inv-item-req-price',
+        ].map(it => $(`#${it}`).val());
+
+        // console.log(JSON.stringify(params));
+        // call api to add item
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/inv-item-create',
+            data: {
+                params: params
+            }
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+        })
+        // todo on error highlight problems in the form
+
+        //  todo (won't) allow image upload instead of url
+
+    });
+
+    //// reports
     $('#rp-artist-value').on('click', () => {
 
         // console.log(JSON.stringify(params));
@@ -19,7 +57,9 @@ $(document).ready(() => {
 
             $('#rp-av-modal').modal('show');
         })
-    })
+    });
+
+
 });
 
 

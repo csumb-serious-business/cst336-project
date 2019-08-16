@@ -4,12 +4,23 @@ add file & dir: secrets/db.json5:
 
 ```json5
 {
+    host: 'db-hostname',
     user: 'db-username',
-    password: 'password-for-user'
+    password: 'password-for-user',
+    database: 'database-name'
 }
 ```
 
 run `bootstrap.js` to initialize the DB with schema, stored procedures and data
+note: if your setting up a new DB for this installation (ie. Local Env), on the last line of `bootstrap.js` change:
+```
+main(true, false);
+``` 
+to
+```
+main(true, true);
+```
+see main function docs for more info
 
 webstorm - install twig plugin & associate with .njk
 

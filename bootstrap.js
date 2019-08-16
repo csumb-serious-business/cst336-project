@@ -4,27 +4,48 @@ const fs = require('fs');
 const parse = require('csv-parse');
 const SECRETS = json.parse(fs.readFileSync('secrets/db.json5'));
 
+const SQL = {};
+
 
 const CONNECTION = mysql.createConnection({
-    host: 'localhost',
+    host: SECRETS.host,
     user: SECRETS.user,
     password: SECRETS.password,
     multipleStatements: true,
 });
 
-// database: 'serious_cst336',
-
 /**
  * populates the OLTP (biz tables) with data from artwork.csv
- * @param fullRebuild if true clear (DROP) the existing database
+ * @param fullRebuild if true clear all tables
  * and execute a full rebuild from the csv file
+ * @param createDB (for running in local env)
+ * this will create a new db
  */
-function main(fullRebuild = false) {
+async function main(fullRebuild = false, createDB = false) {
+
+    if (createDB) {
+        await CONNECTION.query(`
+        DROP DATABASE IF EXISTS ${SECRETS.database};
+        CREATE DATABASE ${SECRETS.database};
+        `,
+            (err, result) => {
+                if (err) {
+                    console.log(err)
+                }
+                // console.log(result);
+                return result;
+            });
+    }
+
+
+    CONNECTION.changeUser({database: SECRETS.database});
+    console.log(`switched to db: ${SECRETS.database}`);
+
     if (fullRebuild) {
         console.log(`fully rebuilding the database`);
-        db('db/oltp/create-schema.sql');
+        await db('db/oltp/create-schema.sql');
     }
-    fs.createReadStream('db/data/artwork.csv')
+    await fs.createReadStream('db/data/artwork.csv')
         .pipe(parse({delimiter: ','}, _procCSV));
 }
 
@@ -72,8 +93,9 @@ async function _procCSV(err, data) {
  * @param params the parameters to use in the query (optional)
  * @return result
  */
-function db(sqlFile, params = []) {
-    let read = fs.readFileSync(sqlFile, 'utf-8');
+async function db(sqlFile, params = []) {
+    let read = await fs.readFileSync(sqlFile, 'utf-8');
+
     // can't use mysql delimiters
     // see: https://github.com/mysqljs/mysql/issues/1683
 
@@ -81,6 +103,7 @@ function db(sqlFile, params = []) {
     let sql = read.toString()
         .replace(/DELIMITER\s..;/gm, '')
         .replace(/\$\$/gm, ';').replace(/DELIMITER\s;/gm, '');
+
 
     // console.log(`db: ${db}, params: ${params}`);
     CONNECTION.query(sql, params,
@@ -93,4 +116,4 @@ function db(sqlFile, params = []) {
         })
 }
 
-main(true);
+main(true, false);

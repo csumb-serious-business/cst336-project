@@ -1,5 +1,4 @@
 -- stored procedure --
-USE serious_cst336;
 -- create/recreate the stored procedure
 DROP PROCEDURE IF EXISTS inv_item_update;
 DELIMITER $$

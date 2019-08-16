@@ -1,30 +1,32 @@
 # MySQL
-# create/recreate the database
-DROP DATABASE IF EXISTS serious_cst336;
-CREATE DATABASE serious_cst336;
-
-USE serious_cst336;
-
-CREATE TABLE type
+# create and clear all tables
+SET FOREIGN_KEY_CHECKS = 0;
+CREATE TABLE IF NOT EXISTS `type`
 (
     `id`   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE materials
+TRUNCATE TABLE `type`;
+
+CREATE TABLE IF NOT EXISTS `materials`
 (
     `id`   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL
 
 );
 
-CREATE TABLE artist
+TRUNCATE TABLE `materials`;
+
+CREATE TABLE IF NOT EXISTS `artist`
 (
     `id`   INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `name` VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE masterpiece
+TRUNCATE TABLE `artist`;
+
+CREATE TABLE IF NOT EXISTS `masterpiece`
 (
     `id`           INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title`        VARCHAR(250) NOT NULL,
@@ -42,7 +44,9 @@ CREATE TABLE masterpiece
         REFERENCES artist (`id`)
 );
 
-CREATE TABLE inventory
+TRUNCATE `masterpiece`;
+
+CREATE TABLE IF NOT EXISTS `inventory`
 (
     `id`                INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `masterpiece_id`    INT  NOT NULL,
@@ -54,7 +58,9 @@ CREATE TABLE inventory
         REFERENCES masterpiece (`id`)
 );
 
-CREATE TABLE sales
+TRUNCATE `inventory`;
+
+CREATE TABLE IF NOT EXISTS `sales`
 (
     `id`           INT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `inventory_id` INT  NOT NULL,
@@ -62,3 +68,7 @@ CREATE TABLE sales
     CONSTRAINT sales_fk_inventory FOREIGN KEY (`inventory_id`)
         REFERENCES inventory (`id`)
 );
+
+TRUNCATE `sales`;
+
+SET FOREIGN_KEY_CHECKS = 1;

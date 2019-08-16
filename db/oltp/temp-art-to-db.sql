@@ -1,6 +1,4 @@
 # MySQL
-USE serious_cst336;
-
 # clear all tables before loading
 SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE type;

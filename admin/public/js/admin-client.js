@@ -41,6 +41,27 @@ $(document).ready(() => {
         })
     })
 
+
+    //todo impl pagination or infinite scroll
+    $('#rp-artist-value-by-year').on('click', () => {
+
+        // console.log(JSON.stringify(params));
+        // call the api
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/artist-value-by-year'
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate table
+            popReportTable(res);
+
+            $('#rp-avy-modal').modal('show');
+        })
+    })
+
+
     //todo impl pagination or infinite scroll
     $('#rp-medium-value').on('click', () => {
 
@@ -76,6 +97,25 @@ $(document).ready(() => {
             popReportTable(res);
 
             $('#rp-mp-modal').modal('show');
+        })
+    })
+
+    //todo impl pagination or infinite scroll
+    $('#rp-medium-value-by-year').on('click', () => {
+
+        // console.log(JSON.stringify(params));
+        // call the api
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/medium-value-by-year'
+        }).done((res, status) => {
+            // put result on the page
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate table
+            popReportTable(res);
+
+            $('#rp-mvy-modal').modal('show');
         })
     })
 });

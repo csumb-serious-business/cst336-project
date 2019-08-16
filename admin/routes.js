@@ -8,8 +8,11 @@ const login = require('./login');
 const SQL = {
     artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql'),
     artistProfit: db.sqlFrom('admin/sql/rp-artist-profit.sql'),
+    artistValueByYear: db.sqlFrom('admin/sql/rp-artist-value-by-year.sql'),
+
     mediumValue: db.sqlFrom('admin/sql/rp-medium-value.sql'),
-    mediumProfit: db.sqlFrom('admin/sql/rp-medium-profit.sql')
+    mediumProfit: db.sqlFrom('admin/sql/rp-medium-profit.sql'),
+    mediumValueByYear: db.sqlFrom('admin/sql/rp-medium-value-by-year.sql')
 };
 
 //serve static files
@@ -50,6 +53,12 @@ router.get('/api/admin/artist-profit',
         res.send(got);
     });
 
+router.get('/api/admin/artist-value-by-year',
+    async(req, res) => {
+        let got = await db.get(SQL.artistValueByYear).catch(e => []);
+        res.send(got);
+    });
+
 router.get('/api/admin/medium-value',
     async(req, res) => {
         let got = await db.get(SQL.mediumValue).catch(e => []);
@@ -59,6 +68,12 @@ router.get('/api/admin/medium-value',
 router.get('/api/admin/medium-profit',
     async(req, res) => {
         let got = await db.get(SQL.mediumProfit).catch(e => []);
+        res.send(got);
+    });
+
+router.get('/api/admin/material-value-by-year',
+    async(req, res) => {
+        let got = await db.get(SQL.materialValueByYear).catch(e => []);
         res.send(got);
     });
 

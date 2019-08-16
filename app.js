@@ -31,11 +31,11 @@ server.use(admin);
 server.use(app);
 
 // catch all route
-server.get('/*', function (req, res) {
+server.get('/*', function(req, res) {
     return res.render('404');
 });
 
-let port = process.argv.includes('heroku') ? process.env.PORT : config.port;
-
-server.listen(port);
+// let port = process.argv.includes('heroku') ? process.env.PORT : config.port;
+server.listen(process.env.PORT || 5000);
+// server.listen(port);
 console.log(`server listening on port ${port}`);

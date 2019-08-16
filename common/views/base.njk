@@ -21,6 +21,15 @@
 
         {# margin to accommodate header bar #}
         <main>
+
+            <div>
+                <body>
+                    <div class="jumbotron text-center">
+                        <h1>Serious Masterpieces</h1>
+                        <p>We specialize in Serious Art</p>
+                    </div>
+                </body
+            </div>
             {% block header %}{% endblock %}
 
             {# todo, but not urgent This should link to common/views/nav.njk but doesn't #}
@@ -32,8 +41,12 @@
                         <a class="navbar-brand" href="#"></a>
                     </div>
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="/admin/signin">Sign in</a></li>
+                        <li class="active">
+                            <a href="/">Home</a>
+                        </li>
+                        <li>
+                            <a href="/admin/signin">Sign in</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -47,6 +60,7 @@
                 </div>
             {% endblock %}
             {% block footer %}{% endblock %}
+            {% include "snippets/footer.njk" %}
             {% block modals %}{% endblock %}
         </main>
 

@@ -82,11 +82,16 @@ ul.nav li.active a {
 
 #footer-id {
     text-align: center;
+    padding-top: 30px;
+    padding-bottom: 20px;
     margin-block: 20px;
 }
 
 .jumbotron {
     background-color: #f4511e;
-    /* Orange */
     color: #ffffff;
+}
+
+.search-form {
+    width: 50%;
 }

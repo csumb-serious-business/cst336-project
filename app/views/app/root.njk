@@ -2,15 +2,18 @@
 {% from "app/snippets/ms-search.macro.njk" import search %}
 
 {% extends "base.njk" %}
-{% set title="Serious Masterpieces" %}
+{% set title = "Serious Masterpieces" %}
 
-{% block header %}<h1>Serious Masterpieces</h1>{% endblock %}
+{% block header %}{% endblock %}
+
 {% block main %}
 
     {{ search(types, materials, artists) }}
-    <script src="/app/js/inv-search.js"></script>
+    <script src="/app/js/inv-search.js">
+    </script>
     {% include "app/snippets/ms-results.njk" %}
 
 {% endblock %}
 
-{% block modals %}{% include "app/snippets/mi-modal.njk" %}{% endblock %}
+{% block modals %}{% include "app/snippets/mi-modal.njk" %}
+{% endblock %}

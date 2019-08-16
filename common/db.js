@@ -7,7 +7,7 @@ secrets = json.parse(fs.readFileSync('secrets/db.json5'));
 const pool = mysql.createPool({
     connectionLimit: 10,
     host: 'localhost',
-    database: 'serious_cst336',
+    database: secrets.database,
     user: secrets.user,
     password: secrets.password
 });

@@ -106,9 +106,11 @@ const populateTable = data => {
             $('#mi-type').text(res.type);
             $('#mi-materials').text(res.materials);
             // populate and show the modal
+            $('.modal-dialog').modal('hide');
             $('#mp-modal').modal('show');
         });
 
 
     })
 };
+

@@ -14,6 +14,8 @@ const SQL = {
     artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql'),
     // crud
     invItemCreate: db.sqlFrom('admin/sql/inv-item-create.sql'),
+    invItemRead: db.sqlFrom('admin/sql/inv-item-read.sql'),
+    invItemUpdate: db.sqlFrom('admin/sql/inv-item-update.sql'),
 };
 
 //serve static files
@@ -64,6 +66,20 @@ router.get('/api/admin/inv-item-create',
         let got = await db.get(SQL.invItemCreate, req.query.params).catch(e => []);
         res.send(got);
     });
+
+router.get('/api/admin/inv-item-read',
+    async (req, res) => {
+        let got = await db.get(SQL.invItemRead, [req.query.iid]).catch(e => []);
+        res.send(got[0])
+    }
+);
+
+router.get('/api/admin/inv-item-update',
+    async (req, res) => {
+        let got = await db.get(SQL.invItemUpdate, req.query.params).catch(e => []);
+        res.send(got);
+    }
+);
 
 //// auth
 router.post("/api/admin/signin", async (req, res) => {

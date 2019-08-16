@@ -1,0 +1,51 @@
+<form id="iis-form" class="search-form" action="#">
+    <fieldset class="form-section">
+        <legend>Search for Masterpieces</legend>
+
+        <div class="form-item">
+            <label for="iis-title">Title</label>
+            <input id="iis-title" type="text" class="form-control"/>
+        </div>
+        <div class="form-item">
+            <label for="iis-type">Type</label>
+            <select id="iis-type" class="form-control">
+                <option value="">choose a type</option>
+            </select>
+        </div>
+        <div class="form-item">
+            <label for="iis-mat">Materials</label>
+            <select id="iis-mat" class="form-control">
+                <option value="">choose a material</option>
+            </select>
+        </div>
+        <div class="form-item">
+            <label for="iis-artist">Artist</label>
+            <select id="iis-artist" class="form-control">
+                <option value="">choose an artist</option>
+            </select>
+        </div>
+        <div class="form-item">
+            <label for="iis-price-min">Min Price ($)</label>
+            {# todo set min price to min price in db #}
+            <input id="smp-price-min" type="number" step="1000000" min="0" class="form-control"/>
+        </div>
+        <div class="form-item">
+            <label for="iis-price-max">Max Price ($)</label>
+            {# todo set max price to max price in db #}
+            <input id="iis-price-max" type="number" step="1000000" class="form-control"/>
+        </div>
+        <div class="form-item">
+            <label for="iis-result-count">Type</label>
+            <select id="iis-result-count" class="form-control">
+                <option value="">View</option>
+                <option value="10" selected>10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+            </select>
+        </div>
+        <div>
+            <br/>
+            <button id="iis-submit" class="btn btn-primary">Find Matching Masterpieces</button>
+        </div>
+    </fieldset>
+</form>

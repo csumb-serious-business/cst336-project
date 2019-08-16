@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h3 class="modal-title"><strong>Create Inventory Item</strong></h3>
+                <h3 class="modal-title"><strong>Update Inventory Item</strong></h3>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -11,42 +11,47 @@
                 <form id="search-mp-form" class="search-form" action="#">
                     <fieldset class="form-section">
                         <div class="form-item">
-                            <label for="inv-item-title">Title</label>
-                            <input id="inv-item-title" type="text" class="form-control"/>
+                            <label for="iu-item-title">Title</label>
+                            <input id="iu-item-title" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-type">Type</label>
-                            <input id="inv-item-type" type="text" class="form-control"/>
+                            <label for="iu-item-type">Type</label>
+                            <input id="iu-item-type" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-mat">Materials</label>
-                            <input id="inv-item-mat" type="text" class="form-control"/>
+                            <label for="iu-item-mat">Materials</label>
+                            <input id="iu-item-mat" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-artist">Artist</label>
-                            <input id="inv-item-artist" type="text" class="form-control"/>
+                            <label for="iu-item-artist">Artist</label>
+                            <input id="iu-item-artist" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-year">Year Created</label>
-                            <input id="inv-item-year" type="text" class="form-control"/>
+                            <label for="iu-item-year">Year Created</label>
+                            <input id="iu-item-year" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-pic-src">Image URL</label>
-                            <input id="inv-item-pic-src" type="text" class="form-control"/>
+                            <label for="iu-item-pic-src">Image URL</label>
+                            <input id="iu-item-pic-src" type="text" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-value">Value ($)</label>
-                            <input id="inv-item-value" type="number" step="1000000" min="0" class="form-control"/>
+                            <label for="iu-item-value">Value ($)</label>
+                            <input id="iu-item-value" type="number" step="1000000" min="0" class="form-control"/>
                         </div>
                         <div class="form-item">
-                            <label for="inv-item-req-price">Requisition Price ($)</label>
-                            <input id="inv-item-req-price" type="number" step="1000000" min="0" class="form-control"/>
+                            <label for="iu-item-req-price">Requisition Price ($)</label>
+                            <input id="iu-item-req-price" type="number" step="1000000" min="0" class="form-control"/>
                         </div>
+
+
+                        <input hidden id="iu-item-iid" type="number"/>
+                        <input hidden id="iu-item-mid" type="number"/>
                     </fieldset>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="inv-item-create-submit">Create Item</button>
+                <button type="button" class="btn btn-danger" id="iu-item-delete-submit">Delete Item</button>
+                <button type="button" class="btn btn-primary" id="iu-item-update-submit">Update Item</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

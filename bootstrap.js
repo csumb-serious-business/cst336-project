@@ -38,7 +38,7 @@ async function main(fullRebuild = false, createDB = false) {
     }
 
 
-    CONNECTION.changeUser({database: SECRETS.database});
+    CONNECTION.changeUser({ database: SECRETS.database });
     console.log(`switched to db: ${SECRETS.database}`);
 
     if (fullRebuild) {
@@ -46,7 +46,7 @@ async function main(fullRebuild = false, createDB = false) {
         await db('db/oltp/create-schema.sql');
     }
     await fs.createReadStream('db/data/artwork.csv')
-        .pipe(parse({delimiter: ','}, _procCSV));
+        .pipe(parse({ delimiter: ',' }, _procCSV));
 }
 
 /**
@@ -116,4 +116,4 @@ async function db(sqlFile, params = []) {
         })
 }
 
-main(true, false);
+main(true, true);

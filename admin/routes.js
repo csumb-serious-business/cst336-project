@@ -6,7 +6,13 @@ const login = require('./login');
 
 // pre-load sql queries
 const SQL = {
+    // search options
+    types: db.sqlFrom('app/sql/ms-types.sql'),
+    materials: db.sqlFrom('app/sql/ms-materials.sql'),
+    artists: db.sqlFrom('app/sql/ms-artists.sql'),
+    // reports
     artistValue: db.sqlFrom('admin/sql/rp-artist-value.sql'),
+    // crud
     invItemCreate: db.sqlFrom('admin/sql/inv-item-create.sql'),
 };
 
@@ -36,6 +42,15 @@ router.get('/admin/account-home',
 
 
 /* admin api routes **********************************************************/
+//// search
+router.get('/api/admin/inv-search-options',
+    async (req, res) => res.send({
+        types: await db.get(SQL.types).catch(e => []),
+        materials: await db.get(SQL.materials).catch(e => []),
+        artists: await db.get(SQL.artists).catch(e => [])
+    })
+);
+
 //// reports
 router.get('/api/admin/artist-value',
     async (req, res) => {

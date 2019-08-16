@@ -1,0 +1,23 @@
+{% from "app/snippets/ms-search.macro.njk" import search %}
+<div class="modal" tabindex="-1" role="dialog" id="inv-item-search-modal">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><strong>Create Inventory Item</strong></h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                {{ search(types, materials, artists) }}
+                <script src="/app/js/inv-search.js"></script>
+                {% include "app/snippets/ms-results.njk" %}
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="inv-item-create-submit">Create Item</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

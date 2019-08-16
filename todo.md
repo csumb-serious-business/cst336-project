@@ -29,7 +29,7 @@ DB
 - ✓ 20+ records in 1+ table
 
 Site:
-- 1/2 -- 2+ ajax calls to web apis
+- ✓ 2+ ajax calls to web apis
 - nice, consistent style/design (use bootstrap)
 
 user section:
@@ -52,14 +52,14 @@ admin section:
 - load/update content for 1+ table (pre-pop existing data in the form)
     + update masterpiece/inventory info
 - insert new records for 1+ table
-    + add masterpiece to inventory
+    + ✓ add masterpiece to inventory
 - delete records
     + remove masterpiece from inventory
 - generate 3+ reports (use aggregate functions)
     - ex: avg price of products in the table
     + sales profit by timeframe & artist
     + sales profit by timeframe & medium
-    + inventory value by artist
+    + ✓ inventory value by artist
     + inventory value by medium
     
 extra:
@@ -67,3 +67,5 @@ extra:
 + gulp
 + tests
 + favicon.ico  
+
+imgur.com for pics to include

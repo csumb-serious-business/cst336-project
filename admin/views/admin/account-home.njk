@@ -10,6 +10,7 @@
     {# todo Add database stuff here#}
     <h3>Inventory Management</h3>
     <p><a href="#" id="inv-item-create">create inventory item</a></p>
+    <p><a href="#" id="inv-item-search">find and edit inventory item</a></p>
 
     {# edit/delete masterpiece #}
 
@@ -25,5 +26,6 @@
 {% endblock %}
 {% block modals %}
     {% include "admin/snippets/inv-item-create-modal.njk" %}
+    {% include "admin/snippets/inv-item-search-modal.njk" %}
     {% include "admin/snippets/rp-av-modal.njk" %}
 {% endblock %}

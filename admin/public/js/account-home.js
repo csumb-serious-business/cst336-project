@@ -36,9 +36,48 @@ $(document).ready(() => {
         })
         // todo on error highlight problems in the form
 
-        //  todo (won't) allow image upload instead of url
+        // todo (won't) allow image upload instead of url
+    });
+
+    $('#inv-item-search').on('click', () => {
+        // call api for options
+        $.ajax({
+            method: 'get',
+            url: '/api/admin/inv-search-options'
+        }).done((res, status) => {
+            console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+            // populate options in form
+            let typeEl = $('#smp-type');
+            let matEl = $('#smp-mat');
+            let artistEl = $('#smp-artist');
+
+            res.types.forEach(it => {
+                typeEl.append($('<option>', {
+                    value: it.id,
+                    text: it.name
+                }))
+            });
+
+            res.materials.forEach(it => {
+                matEl.append($('<option>', {
+                    value: it.id,
+                    text: it.name
+                }))
+            });
+            res.artists.forEach(it => {
+                artistEl.append($('<option>', {
+                    value: it.id,
+                    text: it.name
+                }))
+            });
+
+
+            $('#inv-item-search-modal').modal('show');
+        });
 
     });
+
 
     //// reports
     $('#rp-artist-value').on('click', () => {

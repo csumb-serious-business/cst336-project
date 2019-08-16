@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "bootstrap": "node bootstrap.js",
-        "start": "node app.js"
+        "start": "node app.js heroku"
     },
     "repository": {
         "type": "git",

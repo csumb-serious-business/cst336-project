@@ -40,7 +40,7 @@ user section:
     + ✓ filter by sale price
 - add items to cart
     + ✓ see item popover (from click item in list)
-    + add item from cart
+    + add item to cart
 - see items in cart (with total cost)
     + see cart popover (from floating cart icon)
     + remove item from cart

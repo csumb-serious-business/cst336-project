@@ -24,6 +24,10 @@ main(true, true);
 ```
 see main function docs for more info
 
+#### changing port
+in config/app.json5 change the port
+the default port is 33333
+
 ### dev setup
 
 webstorm - install twig plugin & associate with .njk

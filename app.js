@@ -2,6 +2,11 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const app = require("./app/routes");
 const admin = require("./admin/routes");
+const json = require('json5');
+
+// const fs = ;
+
+config = json.parse(require('fs').readFileSync('config/app.json5'));
 
 const session = require('express-session');
 
@@ -26,14 +31,12 @@ server.use(admin);
 server.use(app);
 
 // catch all route
-server.get('/*', function(req, res) {
+server.get('/*', function (req, res) {
     return res.render('404');
 });
 
-//for local db
-var port = 33333;
-server.listen(port);
-console.log(`server listening on port ${port}`);
+let port = process.argv.includes('heroku') ? process.env.PORT : config.port;
 
-//for heroku
-// server.listen(process.env.PORT || 5000);
+server.listen(port);
+
+console.log(`server listening on port ${config.port}`);

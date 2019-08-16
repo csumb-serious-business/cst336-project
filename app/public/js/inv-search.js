@@ -1,7 +1,4 @@
 $(document).ready(() => {
-    // disable forms
-    $('form').submit(e => e.preventDefault());
-
     //todo impl pagination or infinite scroll
     $('#smp-submit').on('click', () => {
         // gather the values
@@ -111,8 +108,7 @@ const populateTable = data => {
             $('#mi-materials').text(res.materials);
             $('#mi-iid').val(res.iid);
             // populate and show the modal
-            $('.modal-dialog').modal('hide');
-            $('#mp-modal').modal('show');
+            $('#mi-modal').modal('show');
         });
     })
 };

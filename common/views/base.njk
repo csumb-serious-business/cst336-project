@@ -19,12 +19,9 @@
 
 <body>
 {# margin to accommodate header bar #}
-{% block header %}{% endblock %}
+
 {% block nav %}{% include "snippets/nav.njk" %}{% endblock %}
-<div class="jumbotron text-center">
-    <h1>Serious Masterpieces</h1>
-    <p>We specialize in Serious Art</p>
-</div>
+{% block header %}{% include "snippets/header.njk" %}{% endblock %}
 
 {% block main %}
     <div>

@@ -1,9 +1,6 @@
 $(document).ready(() => {
     //todo (won't) impl pagination or infinite scroll for tables
 
-    // disable form submissions
-    $('form').submit(e => e.preventDefault());
-
     //// inventory management
     $('#inv-item-create').on('click', () => {
         $('#inv-item-create-modal').modal('show');
@@ -289,7 +286,6 @@ const popSearchTable = data => {
                 callDeleteApi();
             });
 
-            $('#inv-item-search-modal').modal('hide');
             $('#inv-item-update-modal').modal('show');
         });
     })

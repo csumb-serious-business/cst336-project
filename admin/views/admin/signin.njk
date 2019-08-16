@@ -3,22 +3,20 @@
 
 {% block main %}
     <h1>Login Screen</h1>
-    <form method="POST" class="form-horizontal" >
-        <div class="form-section">
-        <label for="username">User name:</label>
-        <input type="text" name="username" id="username">
-        <br>
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">User name: </label>
+            <input type="text" class="form-control" name="username" id="username">
         </div>
 
-        <div class="form-section">
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password">
-        <br>
+        <div class="form-group">
+            <label for="password">Password: </label>
+            <input type="password" class="form-control" name="password" id="password">
         </div>
 
-        <p>
-        <button type="button" class="btn btn-info btn-lg">Login!</button>
-        </p>
+        <div>
+        <button type="button" class="btn btn-info btn-lg">Login</button>
+        </div>
     </form>
     {# todo sould be ajax #}
     {% if loginError %}

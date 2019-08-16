@@ -26,11 +26,15 @@ server.use(admin);
 server.use(app);
 
 // catch all route
-server.get('/*', function (req, res) {
+server.get('/*', function(req, res) {
     return res.render('404');
 });
 
 
+//for local db
 var port = 33333;
 server.listen(port);
 console.log(`server listening on port ${port}`);
+
+//for heroku
+// server.listen(process.env.PORT || 5000);

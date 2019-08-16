@@ -22,7 +22,7 @@ $(document).ready(() => {
             'inv-item-req-price',
         ].map(it => $(`#${it}`).val());
 
-        // console.log(JSON.stringify(params));
+        console.log(JSON.stringify(params));
         // call api to add item
         $.ajax({
             method: 'get',

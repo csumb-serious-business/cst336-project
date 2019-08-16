@@ -6,10 +6,19 @@
 
 {% block main %}
 
-    {{ search(types, materials, artists) }}
-    <script src="/app/js/inv-search.js"></script>
-    <h2>Search Results</h2>
-    {% include "app/snippets/ms-results.njk" %}
+    <div class="row">
+        <div class="col-sm-3">
+            <h3><strong>Search Results</strong></h3>
+            {{ search(types, materials, artists) }}
+        </div>
+
+        <script src="/app/js/inv-search.js"></script>
+        <br/>
+        <div class="col-sm-8">
+            <h3><strong>Search Results</strong></h3>
+            {% include "app/snippets/ms-results.njk" %}
+        </div>
+    </div>
 
 {% endblock %}
 

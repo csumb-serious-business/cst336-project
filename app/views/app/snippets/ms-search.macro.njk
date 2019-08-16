@@ -1,66 +1,67 @@
 {# search & filter form #}
 {% macro search(types, materials, artists) %}
-<form id="search-mp-form" class="search-form" action="#">
+    <div class="row">
+        <div class="col-sm-3">
+            <form id="search-mp-form" class="search-form" action="#">
+                <fieldset class="form-section">
+                    <legend>Search for Beautiful Works of Art</legend>
+                    <div class="form-item">
+                        <label for="smp-title">Title</label>
+                        <input id="smp-title" type="text" class="form-control"/>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-type">Type</label>
+                        <select id="smp-type" class="form-control">
+                            <option value="">choose a type</option>
+                            {% asyncAll it in types %}
+                            <option value="{{ it.id }}">{{ it.name }}</option>
+                            {% endall %}
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-mat">Materials</label>
+                        <select id="smp-mat" class="form-control">
+                            <option value="">choose a material</option>
+                            {% asyncAll it in materials %}
+                            <option value="{{ it.id }}">{{ it.name }}</option>
+                            {% endall %}
 
-    <fieldset class="form-section">
-        <legend>Search for Beautiful Works of Art</legend>
-
-        <div class="form-item">
-            <label for="smp-title">Title</label>
-            <input id="smp-title" type="text" class="form-control"/>
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-artist">Artist</label>
+                        <select id="smp-artist" class="form-control">
+                            <option value="">choose an artist</option>
+                            {% asyncAll it in artists %}
+                            <option value="{{ it.id }}">{{ it.name }}</option>
+                            {% endall %}
+                        </select>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-price-min">Min Price ($)</label>
+                        {# todo set min price to min price in db #}
+                        <input id="smp-price-min" type="number" step="1000000" min="0" class="form-control"/>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-price-max">Max Price ($)</label>
+                        {# todo set max price to max price in db #}
+                        <input id="smp-price-max" type="number" step="1000000" class="form-control"/>
+                    </div>
+                    <div class="form-item">
+                        <label for="smp-result-count">Type</label>
+                        <select id="smp-result-count" class="form-control">
+                            <option value="">View</option>
+                            <option value="10" selected>10</option>
+                            <option value="20">20</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div>
+                        <br/>
+                        <button id="smp-submit" class="btn btn-primary btn-lg">Find Matching Masterpieces</button>
+                    </div>
+                </fieldset>
+            </form>
         </div>
-        <div class="form-item">
-            <label for="smp-type">Type</label>
-            <select id="smp-type" class="form-control">
-                <option value="">choose a type</option>
-                {% asyncAll it in types %}
-                <option value="{{ it.id }}">{{ it.name }}</option>
-                {% endall %}
-            </select>
-        </div>
-        <div class="form-item">
-            <label for="smp-mat">Materials</label>
-            <select id="smp-mat" class="form-control">
-                <option value="">choose a material</option>
-                {% asyncAll it in materials %}
-                <option value="{{ it.id }}">{{ it.name }}</option>
-                {% endall %}
-
-            </select>
-        </div>
-        <div class="form-item">
-            <label for="smp-artist">Artist</label>
-            <select id="smp-artist" class="form-control">
-                <option value="">choose an artist</option>
-                {% asyncAll it in artists %}
-                <option value="{{ it.id }}">{{ it.name }}</option>
-                {% endall %}
-            </select>
-        </div>
-        <div class="form-item">
-            <label for="smp-price-min">Min Price ($)</label>
-            {# todo set min price to min price in db #}
-            <input id="smp-price-min" type="number" step="1000000" min="0" class="form-control"/>
-        </div>
-        <div class="form-item">
-            <label for="smp-price-max">Max Price ($)</label>
-            {# todo set max price to max price in db #}
-            <input id="smp-price-max" type="number" step="1000000" class="form-control"/>
-        </div>
-        <div class="form-item">
-            <label for="smp-result-count">Type</label>
-            <select id="smp-result-count" class="form-control">
-                <option value="">View</option>
-                <option value="10" selected>10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-            </select>
-        </div>
-        <div>
-            <br/>
-            <button id="smp-submit" class="btn btn-primary">Find Matching Masterpieces</button>
-        </div>
-    </fieldset>
-</form>
 {% endmacro %}
 {# search results #}

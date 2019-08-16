@@ -38,5 +38,4 @@ server.get('/*', function (req, res) {
 let port = process.argv.includes('heroku') ? process.env.PORT : config.port;
 
 server.listen(port);
-
-console.log(`server listening on port ${config.port}`);
+console.log(`server listening on port ${port}`);

@@ -1,7 +1,9 @@
 /** this will contain site-wide css */
-/*#sm-table tbody tr {*/
-/*    background-color: gray;*/
-/*}*/
+
+
+/* #sm-table tbody tr {
+    background-color: gray;
+} */
 
 #sm-table tbody tr:hover {
     filter: invert();
@@ -26,7 +28,7 @@ form {
     display: table-row;
 }
 
-.form-item > * {
+.form-item>* {
     display: table-cell;
     margin: .5em;
 }
@@ -44,7 +46,6 @@ form {
 .form-item span {
     font-size: inherit;
     font-weight: bolder;
-
 }
 
 .form-span {
@@ -52,5 +53,78 @@ form {
 }
 
 #mi-image {
-    max-width: 80% ;
+    max-width: 80%;
+}
+
+.page-header {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbar-inverse,
+ul.nav li a,
+ul.nav li a:visited,
+ul.nav li a:hover,
+ul.nav li a:active,
+ul.nav li.active a {
+    background: black;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white !important;
+    text-decoration: none;
+    text-align: center;
+}
+
+#password,
+#username {
+    padding-block: 10%;
+    margin-block: 10%;
+}
+
+#footer-id {
+    background: black;
+    text-align: center;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    margin-block: 5%;
+    border: 1px solid;
+}
+
+.jumbotron {
+    background-color: #f4511e;
+    color: #ffffff;
+    padding: 1%;
+}
+
+.col-sm-3 {
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+
+/* .col-sm-8 {
+    padding-right: 1%;
+} */
+
+.row {
+    flex-wrap: wrap;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+.navbar-nav {
+    display: flex;
+    flex-direction: row;
+    /* width: 10%; */
+}
+
+#navHome,
+#navSignIn {
+    padding: 10%;
+    background-color: white;
+}
+
+.signin-section {
+    display: table-column;
+    padding: 1%;
+    padding-bottom: 10%;
 }

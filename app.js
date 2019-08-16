@@ -26,11 +26,12 @@ server.use(admin);
 server.use(app);
 
 // catch all route
-server.get('/*', function (req, res) {
+server.get('/*', function(req, res) {
     return res.render('404');
 });
 
 
 var port = 33333;
-server.listen(port);
+// server.listen(port);
+server.listen(process.env.PORT || 5000);
 console.log(`server listening on port ${port}`);

@@ -1,25 +1,26 @@
 {
-    "name": "nunjucks-express-starter",
-    "version": "1.0.0",
-    "description": "Starter Nunjucks + Express project",
+    "name": "serious-masterpieces",
+    "version": "0.0.1",
+    "description": "A shopping cart for SERIOUS MASTERPIECES",
     "main": "app.js",
     "scripts": {
-        "bootstrap": "bootstrap.js"
+        "bootstrap": "node bootstrap.js",
+        "start": "node app.js"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/lixiii/nunjucks-express-starter.git"
+        "url": "git+https://github.com/csumb-serious-business/cst336-project.git"
     },
-    "author": "lixiii",
-    "license": "ISC",
+    "author": "SERIOUS BUSINESS",
+    "license": "UNLICENSED",
     "bugs": {
-        "url": "https://github.com/lixiii/nunjucks-express-starter/issues"
+        "url": "https://github.com/csumb-serious-business/cst336-project"
     },
-    "homepage": "https://github.com/lixiii/nunjucks-express-starter#readme",
+    "homepage": "https://github.com/csumb-serious-business/cst336-project#readme",
     "dependencies": {
         "ava": "^2.2.0",
         "bcrypt": "^3.0.6",
-        "csv-parse": "^4.4.5",
+        "csv-parse": "^4.4.4",
         "express": "^4.17.1",
         "express-session": "^1.16.2",
         "json5": "^2.1.0",

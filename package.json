@@ -4,8 +4,7 @@
     "description": "Starter Nunjucks + Express project",
     "main": "app.js",
     "scripts": {
-        "bootstrap": "bootstrap.js",
-        "start": "node app.js"
+        "bootstrap": "bootstrap.js"
     },
     "repository": {
         "type": "git",

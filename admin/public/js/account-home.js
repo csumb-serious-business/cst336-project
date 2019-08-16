@@ -46,12 +46,18 @@ $(document).ready(() => {
             url: '/api/admin/inv-search-options'
         }).done((res, status) => {
             console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+            // clear search results (if any)
+            let tableHeader = $('#header-row');
+            let tableRows = $('#data-rows');
+            // clear the table
+            tableHeader.empty();
+            tableRows.empty();
+
 
             // populate options in form
             let typeEl = $('#iis-type');
             let matEl = $('#iis-mat');
             let artistEl = $('#iis-artist');
-
             typeEl.empty();
             typeEl.append($('<option>', {value: '', text: 'choose a type'}));
             matEl.empty();
@@ -314,12 +320,28 @@ const callUpdateApi = () => {
         }
     }).done((res, status) => {
         console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
         // todo handle error cases
         $('#inv-item-update-modal').modal('hide');
     });
 };
 
 const callDeleteApi = () => {
-    // todo handle error cases
-    $('#inv-item-update-modal').modal('hide');
+// get values to pass
+    let params = ['iu-item-iid'].map(it => $(`#${it}`).val());
+    console.log(JSON.stringify(params));
+
+    // call the api
+    $.ajax({
+        method: 'get',
+        url: '/api/admin/inv-item-delete',
+        data: {
+            params: params
+        }
+    }).done((res, status) => {
+        console.log(`res: ${JSON.stringify(res)}, stat: ${status}`);
+
+        // todo handle error cases
+        $('#inv-item-update-modal').modal('hide');
+    });
 };

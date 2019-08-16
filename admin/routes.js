@@ -16,6 +16,7 @@ const SQL = {
     invItemCreate: db.sqlFrom('admin/sql/inv-item-create.sql'),
     invItemRead: db.sqlFrom('admin/sql/inv-item-read.sql'),
     invItemUpdate: db.sqlFrom('admin/sql/inv-item-update.sql'),
+    invItemDelete: db.sqlFrom('admin/sql/inv-item-delete.sql'),
 };
 
 //serve static files
@@ -77,6 +78,13 @@ router.get('/api/admin/inv-item-read',
 router.get('/api/admin/inv-item-update',
     async (req, res) => {
         let got = await db.get(SQL.invItemUpdate, req.query.params).catch(e => []);
+        res.send(got);
+    }
+);
+
+router.get('/api/admin/inv-item-delete',
+    async (req, res) => {
+        let got = await db.get(SQL.invItemDelete, req.query.params).catch(e => []);
         res.send(got);
     }
 );

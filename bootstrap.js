@@ -62,6 +62,7 @@ async function _procCSV(err, data) {
     console.log(`adding stored procedures`);
     await db('db/stored-procs/inv-item-update.sp.sql');
     await db('db/stored-procs/inv-item-create.sp.sql');
+    await db('db/stored-procs/inv-item-delete.sp.sql');
     await db('db/stored-procs/search-masterpieces.sp.sql');
 }
 

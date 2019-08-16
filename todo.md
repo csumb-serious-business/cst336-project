@@ -30,7 +30,7 @@ DB
 
 Site:
 - ✓ 2+ ajax calls to web apis
-- nice, consistent style/design (use bootstrap)
+- ✓ nice, consistent style/design (use bootstrap)
 
 user section:
 - search & filter data using 3+ fields
@@ -39,7 +39,7 @@ user section:
     + ✓ filter by masterpiece title (substring)
     + ✓ filter by sale price
 - add items to cart
-    + see item popover (from click item in list)
+    + ✓ see item popover (from click item in list)
     + add item from cart
 - see items in cart (with total cost)
     + see cart popover (from floating cart icon)
@@ -49,12 +49,12 @@ user section:
 admin section:
 - login/logout
     + express-session
-- load/update content for 1+ table (pre-pop existing data in the form)
-    + update masterpiece/inventory info
-- insert new records for 1+ table
+- ✓ load/update content for 1+ table (pre-pop existing data in the form)
+    + ✓ update masterpiece/inventory info
+- ✓ insert new records for 1+ table
     + ✓ add masterpiece to inventory
-- delete records
-    + remove masterpiece from inventory
+- ✓ delete records
+    + ✓ remove masterpiece from inventory
 - generate 3+ reports (use aggregate functions)
     - ex: avg price of products in the table
     + sales profit by timeframe & artist

@@ -1,16 +1,24 @@
 {% extends "base.njk" %}
-{% set title="Sample Project home" %}
+{% set title = "Sample Project home" %}
 
 {% block main %}
     <h1>Login Screen</h1>
-    <form method="POST">
+    <form method="POST" class="form-horizontal" >
+        <div class="form-group">
         <label for="username">User name:</label>
         <input type="text" name="username" id="username">
         <br>
+        </div>
+
+        <div class="form-group">
         <label for="password">Password:</label>
         <input type="password" name="password" id="password">
         <br>
-        <button>Login!</button>
+        </div>
+
+        <p>
+        <button type="button" class="btn btn-info btn-lg">Login!</button>
+        </p>
     </form>
     {# todo sould be ajax #}
     {% if loginError %}

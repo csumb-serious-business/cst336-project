@@ -1,6 +1,12 @@
 /** this will contain site-wide css */
+
+
 /*#sm-table tbody tr {*/
+
+
 /*    background-color: gray;*/
+
+
 /*}*/
 
 #sm-table tbody tr:hover {
@@ -26,7 +32,7 @@ form {
     display: table-row;
 }
 
-.form-item > * {
+.form-item>* {
     display: table-cell;
     margin: .5em;
 }
@@ -44,7 +50,6 @@ form {
 .form-item span {
     font-size: inherit;
     font-weight: bolder;
-
 }
 
 .form-span {
@@ -52,5 +57,24 @@ form {
 }
 
 #mi-image {
-    max-width: 80% ;
+    max-width: 80%;
+}
+
+.page-header {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.navbar navbar-inverse {
+    background: black;
+}
+
+#password,
+#username {
+    padding-block: 10px;
+    margin-block: 10px;
+}
+
+.btn btn-info btn-lg {
+    float: left;
+    margin: 0;
 }
